@@ -13,6 +13,9 @@ noSuchProduct = {"message": "No such product in stock"}
 
 notEnoughProductQuantity = {"message": "Not enough quantity of the product in stock"} 
 
+perPageLimitError = {"message": "Per page limit should be greater than 1"}
+
 dayLimit = 30 
+
 perPage = 5
 

@@ -10,6 +10,7 @@ from config import pageError
 from config import notEnoughProductQuantity
 from config import dbname
 from config import dayLimit
+from config import perPageLimitError
 from config import perPage
 
 
@@ -106,9 +107,17 @@ def getOrderList():
 
 def getPaginatedResults(resultSet, url, page, limitPerPage):
 
+    if limitPerPage <= 0:
+        return perPageLimitError
+
     countRecord = len(resultSet)
-    page = page - 1
-    if countRecord < (page*limitPerPage) or limitPerPage < 0:
+
+    if page < 1:
+        return pageError
+    else:
+        page = page - 1
+
+    if countRecord < (page*limitPerPage) :
         return pageError
 
     obj = {}
